@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GREEN-API test</title>
+  <style>
+    :root { font-family: Inter, Arial, sans-serif; color: #222; }
+    body { margin: 16px; background: #f7f8fa; }
+    h1 { margin-bottom: 8px; font-size: 20px; }
+    .container { display: flex; gap: 20px; align-items: flex-start; }
+    .controls { flex: 1; min-width: 320px; background: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 1px 4px rgba(20,20,40,0.05); }
+    .response { flex: 1; min-width: 380px; background: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 1px 4px rgba(20,20,40,0.05); }
+    label { display: block; margin-top: 10px; font-size: 13px; color: #333; }
+    input[type="text"], textarea { width: 100%; padding: 8px 10px; margin-top: 6px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+    textarea[readonly] { background: #fafafa; min-height: 420px; white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; }
+    .row { display:flex; gap:10px; }
+    .btn { display:inline-block; padding:10px 12px; margin-top:10px; border-radius:6px; border: none; cursor: pointer; background:#2563eb; color:#fff; font-size:14px; }
+    .btn.secondary { background:#6b7280; }
+    small.note { color:#666; display:block; margin-top:6px; }
+  </style>
+</head>
+<body>
+  <h1>Тестовое задание — GREEN-API</h1>
+  <div class="container">
+    <div class="controls">
+      <label>ID Instance
+        <input id="idInstance" type="text" placeholder="Например: 12345" />
+      </label>
+
+      <label>ApiTokenInstance
+        <input id="apiToken" type="text" placeholder="Ваш ApiTokenInstance (НЕ коммитьте в репозиторий!)" />
+      </label>
+
+      <label>chatId (номер получателя в формате 79001234567@c.us)
+        <input id="chatId" type="text" placeholder="79001234567@c.us" />
+      </label>
+
+      <label>Message (текст для sendMessage)
+        <input id="messageText" type="text" placeholder="Привет из тестового задания" />
+      </label>
+
+      <label>URL файла (для sendFileByUrl)
+        <input id="urlFile" type="text" placeholder="https://example.com/image.png" />
+      </label>
+
+      <label>Имя файла (fileName)
+        <input id="fileName" type="text" placeholder="image.png" />
+      </label>
+
+      <label>Caption (подпись к файлу)
+        <input id="caption" type="text" placeholder="Вот картинка" />
+      </label>
+
+      <div style="margin-top:12px;">
+        <button class="btn" id="btnGetSettings">getSettings</button>
+        <button class="btn" id="btnGetState">getStateInstance</button>
+        <button class="btn" id="btnSendMsg">sendMessage</button>
+        <button class="btn" id="btnSendFile">sendFileByUrl</button>
+        <button class="btn secondary" id="btnClear">Очистить ответ</button>
+      </div>
+
+      <small class="note">Важно: <strong>не</strong> храните реальные токены в публичном репозитории. Вводите их вручную в форму.</small>
+    </div>
+
+    <div class="response">
+      <h3>Ответ API</h3>
+      <textarea id="response" readonly></textarea>
+      <div style="margin-top:8px;">
+        <button class="btn" id="btnCopy">Скопировать ответ</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
