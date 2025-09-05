@@ -6,7 +6,7 @@
   <title>GREEN-API test</title>
   <style>
     :root { font-family: Inter, Arial, sans-serif; color: #222; }
-    body { margin: 16px; background: #f7f8fa; }
+    body { margin: 16px; background: #f7faf8; }
     h1 { margin-bottom: 8px; font-size: 20px; }
     .container { display: flex; gap: 20px; align-items: flex-start; }
     .controls { flex: 1; min-width: 320px; background: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 1px 4px rgba(20,20,40,0.05); }
@@ -15,7 +15,7 @@
     input[type="text"], textarea { width: 100%; padding: 8px 10px; margin-top: 6px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
     textarea[readonly] { background: #fafafa; min-height: 420px; white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; }
     .row { display:flex; gap:10px; }
-    .btn { display:inline-block; padding:10px 12px; margin-top:10px; border-radius:6px; border: none; cursor: pointer; background:#2563eb; color:#fff; font-size:14px; }
+    .btn { display:inline-block; padding:10px 12px; margin-top:10px; border-radius:6px; border: none; cursor: pointer; background:#f7faf8; color:#fff; font-size:14px; }
     .btn.secondary { background:#6b7280; }
     small.note { color:#666; display:block; margin-top:6px; }
   </style>
@@ -33,7 +33,7 @@
       </label>
 
       <label>chatId (номер получателя в формате номер@c.us)
-        <input id="chatId" type="text" placeholder="77779921216@c.us" />
+        <input id="chatId" type="text" placeholder="77779911116@c.us" />
       </label>
 
       <label>Текст сообщении
@@ -52,12 +52,11 @@
       <h3>Ответ API</h3>
       <textarea id="response" readonly></textarea>
       <div style="margin-top:8px;">
-        <button class="btn" id="btnCopy">Скопировать ответ</button>
-      </div>
-    </div>
+        
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
 
