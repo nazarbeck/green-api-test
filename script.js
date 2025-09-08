@@ -65,6 +65,8 @@ async function sendFileByUrl() {
   const token = $('apiToken').value.trim();
   const chatId = $('chatId').value.trim();
   const urlFile = $('urlFile').value.trim();
+  const fileName = $('fileName').value.trim();
+  const caption = $('caption').value.trim();
 
   if (!id || !token) return showResponse({ error: 'Введите idInstance и ApiTokenInstance' });
   if (!chatId || !urlFile) return showResponse({ error: 'Введите chatId и urlFile' });
@@ -74,7 +76,7 @@ async function sendFileByUrl() {
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chatId, urlFile, })
+      body: JSON.stringify({ chatId, urlFile, fileName, caption })
     });
     const data = await res.json();
     showResponse(data);
