@@ -57,10 +57,14 @@
         <button class="btn" id="btnGetState">getStateInstance</button>
         <button class="btn" id="btnSendMsg">sendMessage</button>
         <button class="btn" id="btnSendFile">sendFileByUrl</button>
-         <button class="btn" id="getQrCode">getQrCode</button>
+        <button class="btn" id="btnGetQr">getQrCode</button>
         <button class="btn secondary" id="btnClear">Очистить ответ</button>
-    </div>
-
+        
+<div style="margin-top:16px;">
+  <h3>QR-код</h3>
+  <div id="qrContainer"></div>
+</div>
+      
     <div class="response">
       <h3>Ответ от API</h3>
       <textarea id="response" readonly></textarea>
@@ -71,6 +75,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
