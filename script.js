@@ -102,10 +102,42 @@ async function getQrCode() {
   }
 }
 
+async function getQrCode() {
+  const id = $('idInstance').value.trim();
+  const token = $('apiToken').value.trim();
+
+  if (!id || !token) return showResponse({ error: 'Введите idInstance и ApiTokenInstance' });
+
+  const url = `${baseUrl(id)}/qr/${token}`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (data?.message) {
+      // Очистим контейнер и добавим картинку
+      const qrContainer = $('qrContainer');
+      qrContainer.innerHTML = "";
+      const img = document.createElement("img");
+      img.src = "data:image/png;base64," + data.message;
+      img.alt = "QR code";
+      img.style.maxWidth = "300px";
+      qrContainer.appendChild(img);
+
+      showResponse({ status: "QR получен, отсканируйте в WhatsApp" });
+    } else {
+      showResponse(data);
+    }
+  } catch (err) {
+    errorHandler(err);
+  }
+}
+
 
 /* Обработчики кнопок */
 $('btnGetSettings').addEventListener('click', () => callGet('getSettings'));
 $('btnGetState').addEventListener('click', () => callGet('getStateInstance'));
 $('btnSendMsg').addEventListener('click', sendMessage);
 $('btnSendFile').addEventListener('click', sendFileByUrl);
+$('btnGetQr').addEventListener('click', getQrCode);
 $('btnClear').addEventListener('click', () => $('response').value = '');
+
