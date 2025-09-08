@@ -85,6 +85,24 @@ async function sendFileByUrl() {
   }
 }
 
+async function getQrCode() {
+  const id = "7105315582";
+  const token = "a46dcf1cf9a54175b344bc55d18d2767788364475ca14f0899";
+  const url = `https://7105.api.greenapi.com/waInstance${id}/qr/${token}`;
+
+  const res = await fetch(url);
+  const data = await res.json();
+
+  if (data?.message) {
+    const img = document.createElement("img");
+    img.src = "data:image/png;base64," + data.message;
+    document.body.appendChild(img);
+  } else {
+    console.log("Ошибка или инстанс уже авторизован:", data);
+  }
+}
+
+
 /* Обработчики кнопок */
 $('btnGetSettings').addEventListener('click', () => callGet('getSettings'));
 $('btnGetState').addEventListener('click', () => callGet('getStateInstance'));
