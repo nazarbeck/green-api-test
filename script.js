@@ -89,4 +89,5 @@ async function sendFileByUrl() {
 $('btnGetSettings').addEventListener('click', () => callGet('getSettings'));
 $('btnGetState').addEventListener('click', () => callGet('getStateInstance'));
 $('btnSendMsg').addEventListener('click', sendMessage);
+$('btnSendFile').addEventListener('click', sendFileByUrl);
 $('btnClear').addEventListener('click', () => $('response').value = '');
