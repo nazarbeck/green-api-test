@@ -60,6 +60,28 @@ async function sendMessage() {
     errorHandler(err);
   }
 }
+async function sendFileByUrl() {
+  const id = $('idInstance').value.trim();
+  const token = $('apiToken').value.trim();
+  const chatId = $('chatId').value.trim();
+  const urlFile = $('urlFile').value.trim();
+
+  if (!id || !token) return showResponse({ error: 'Введите idInstance и ApiTokenInstance' });
+  if (!chatId || !urlFile) return showResponse({ error: 'Введите chatId и urlFile' });
+
+  const url = `${baseUrl(id)}/sendFileByUrl/${token}`;
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chatId, urlFile, })
+    });
+    const data = await res.json();
+    showResponse(data);
+  } catch (err) {
+    errorHandler(err);
+  }
+}
 
 /* Обработчики кнопок */
 $('btnGetSettings').addEventListener('click', () => callGet('getSettings'));
