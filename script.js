@@ -86,23 +86,6 @@ async function sendFileByUrl() {
 }
 
 async function getQrCode() {
-  const id = "7105315582";
-  const token = "a46dcf1cf9a54175b344bc55d18d2767788364475ca14f0899";
-  const url = `https://7105.api.greenapi.com/waInstance${id}/qr/${token}`;
-
-  const res = await fetch(url);
-  const data = await res.json();
-
-  if (data?.message) {
-    const img = document.createElement("img");
-    img.src = "data:image/png;base64," + data.message;
-    document.body.appendChild(img);
-  } else {
-    console.log("Ошибка или инстанс уже авторизован:", data);
-  }
-}
-
-async function getQrCode() {
   const id = $('idInstance').value.trim();
   const token = $('apiToken').value.trim();
 
@@ -113,24 +96,27 @@ async function getQrCode() {
     const res = await fetch(url);
     const data = await res.json();
 
-    if (data?.message) {
-      // Очистим контейнер и добавим картинку
-      const qrContainer = $('qrContainer');
-      qrContainer.innerHTML = "";
+    const qrContainer = $('qrContainer');
+    qrContainer.innerHTML = "";
+
+    // Если есть base64 — показываем картинку
+    if (data?.message && data.message.length > 200) {
       const img = document.createElement("img");
       img.src = "data:image/png;base64," + data.message;
       img.alt = "QR code";
       img.style.maxWidth = "300px";
       qrContainer.appendChild(img);
 
-      showResponse({ status: "QR получен, отсканируйте в WhatsApp" });
+      showResponse({ status: "QR получен и показан" });
     } else {
+      // Если base64 нет — просто показать текстовый ответ
       showResponse(data);
     }
   } catch (err) {
     errorHandler(err);
   }
 }
+
 
 
 /* Обработчики кнопок */
